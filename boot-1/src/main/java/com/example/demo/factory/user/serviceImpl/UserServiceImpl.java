@@ -1,5 +1,7 @@
 package com.example.demo.factory.user.serviceImpl;
 
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +24,9 @@ public class UserServiceImpl implements UserService{
      * @return User
      */
     @Override
-    public Map<String,Object> queryUserByNamePWD(String username, String password) {
-        return userMapper.queryUserByNamePWD(username, password);
+    public  List<Map<String, Object>> queryUserByNamePWD(Map<String, Object> paramMap) {
+      
+    	return userMapper.queryUserByNamePWD(paramMap);
     }
 
     /**

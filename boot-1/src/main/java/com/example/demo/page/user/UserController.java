@@ -1,26 +1,34 @@
 package com.example.demo.page.user;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.factory.user.service.UserService;
 
-@RestController
-@RequestMapping("/user")
+@Controller
+@RequestMapping("user")
 public class UserController {
 	@Autowired
 	private UserService userService;
 
 	@RequestMapping("/index")
 	public String index() {
-		return " boot";
+		//使用@restController注解shi
+	//	ModelAndView mv = new ModelAndView("index");
+		return "index";
 	}
 
 	@RequestMapping("/login")
 	@ResponseBody
-	public Object Login() {
-		return userService.queryUserByNamePWD("root", "123456");
+	public Object Login(String name, String pass) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("name", name);
+		map.put("pass", pass);
+		return userService.queryUserByNamePWD(map);
 	}
 }

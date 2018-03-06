@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.demo.user.dao.UserDao">
+<mapper namespace="com.example.demo.data.user.dao.UserDao">
 
 	
 	<!-- 根据用户名和密码查询用户信息 -->
-	<select id="queryUserByNamePWD" resultMap="map">
+	<select id="queryUserByNamePWD" parameterType="map" resultType="map">
 		SELECT
 			a.*, (
 		SELECT
@@ -17,9 +17,9 @@
 		FROM
 			cms_gl_ry a
 		WHERE
-			RY_XM = #{0}
+			RY_XM = #{name}
 		and
-			RY_PWD = #{1}
+			RY_PWD = #{pass}
 	</select>
 	
 	<!-- 根据用户ID查询 用户职位权限 -->
