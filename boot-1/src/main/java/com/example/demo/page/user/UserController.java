@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.demo.factory.rabbitmq.service.MqService;
 import com.example.demo.factory.user.service.UserService;
 
 
@@ -18,12 +19,21 @@ import com.example.demo.factory.user.service.UserService;
 public class UserController {
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private MqService mqService;
 
 	@RequestMapping("/index")
 	public String index(Model model) {
 		//使用@restController注解shi
 	//	ModelAndView mv = new ModelAndView("index");
 	    model.addAttribute("name", "Dear");
+		return "index";
+	}
+	
+	@RequestMapping("/sendmq")
+	public String sendmq(Model model) {
+		mqService.send("hello");
+		model.addAttribute("name", "Dear");
 		return "index";
 	}
 
