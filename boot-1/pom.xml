@@ -25,16 +25,14 @@
 	</properties>
 
 	<dependencies>
-       <!-- 引入thymeleaf模板引擎的依赖  包含spring-boot-starter-web-->
-		<!-- <dependency>
+		<!-- 引入thymeleaf模板引擎的依赖 包含spring-boot-starter-web -->
+		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-thymeleaf</artifactId> 
+			</dependency> -->
+		<!-- 引入freemarker模板引擎的依赖 -->
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency> -->
-		  <!-- 引入freemarker模板引擎的依赖 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-freemarker</artifactId>
-        </dependency>
+			<artifactId>spring-boot-starter-freemarker</artifactId>
+		</dependency>
 		<!-- spring security依赖 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -47,6 +45,11 @@
 			<scope>provided</scope> </dependency> <dependency> <groupId>org.apache.tomcat.embed</groupId> 
 			<artifactId>tomcat-embed-jasper</artifactId> <scope>provided</scope> </dependency> -->
 		<!--热启动：每自修改后， 程序自动启动spring Application上下文。 -->
+		<!-- <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
