@@ -1,4 +1,4 @@
-package com.example.demo.page.user;
+package com.example.demo.page.vue;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-public class IndexController {
+public class VueController {
 
 	@RequestMapping("/")
 	public String index(Model model) {

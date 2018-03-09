@@ -29,13 +29,6 @@ public class UserController {
 	    model.addAttribute("name", "Dear");
 		return "index";
 	}
-	
-	@RequestMapping("/sendmq")
-	public String sendmq(Model model) {
-		mqService.send("hello");
-		model.addAttribute("name", "Dear");
-		return "index";
-	}
 
 	@RequestMapping("/login/{name}/{pass}")
 	@ResponseBody

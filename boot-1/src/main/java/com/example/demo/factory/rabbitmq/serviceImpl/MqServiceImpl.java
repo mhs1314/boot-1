@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.factory.rabbitmq.service.MqService;
+
 @Component
 @Service
 public class MqServiceImpl implements MqService {
@@ -15,11 +16,24 @@ public class MqServiceImpl implements MqService {
 	private AmqpTemplate rabbitTemplate;
 
 	@Override
-	public void send(String msg) {
+	public void queue_send(String msg) {
 		// TODO Auto-generated method stub
-		String sendMsg = "hello1 " + new Date();
-		System.out.println("Sender1 : " + sendMsg);
-		this.rabbitTemplate.convertAndSend("helloQueue", sendMsg);
+		System.out.println("Sender1 : " + msg);
+		this.rabbitTemplate.convertAndSend("hello", msg);
+	}
+
+	@Override
+	public void fanout_send(String msg) {
+		// TODO Auto-generated method stub
+		System.out.println("fanout_send : " + msg);
+		this.rabbitTemplate.convertAndSend("fanoutExchange", "", msg);
+	}
+
+	@Override
+	public void topic_send(String msg) {
+		// TODO Auto-generated method stub
+		System.out.println("topic_send : " + msg);
+		this.rabbitTemplate.convertAndSend("exchange", "", msg);
 	}
 
 }
