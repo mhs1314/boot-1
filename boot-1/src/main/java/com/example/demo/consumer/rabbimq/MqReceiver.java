@@ -1,4 +1,4 @@
-package com.example.demo.consumer.demo;
+package com.example.demo.consumer.rabbimq;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
