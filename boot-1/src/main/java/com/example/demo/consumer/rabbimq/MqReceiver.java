@@ -2,15 +2,23 @@ package com.example.demo.consumer.rabbimq;
 
 import java.util.Map;
 
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MqReceiver {
+	@Autowired
+	private AmqpTemplate rabbitTemplate;
 	// 以下是验证没有加入 Exchange的队列
 	@RabbitListener(queues = "hello")
 	public void queues_process_1(Map<String, Object> msg) {
 		System.out.println(String.format("queues_process_1 object: %s", msg));
+		//RPC方案
+		//返回消息处理成功
+		msg.put("res", "ok");
+		this.rabbitTemplate.convertAndSend("hello", msg);
 	}
 
 	@RabbitListener(queues = "hello")

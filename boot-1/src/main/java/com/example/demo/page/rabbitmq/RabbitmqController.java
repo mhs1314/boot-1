@@ -4,7 +4,6 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.demo.factory.rabbitmq.service.MqService;
 
@@ -24,6 +23,9 @@ public class RabbitmqController {
 	@RequestMapping("/queue_send")
 	public String queue_send(Map<String, Object> map) {
 		map.put("name", "queue_hello"); 
+		//RPC方案
+		//请求id用于标记消息记录，返回时校验
+		map.put("id", "123"); 
 		mqService.queue_send(map);
 		return "index";
 	}
