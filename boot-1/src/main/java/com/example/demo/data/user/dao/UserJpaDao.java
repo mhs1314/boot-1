@@ -10,7 +10,7 @@ import com.example.demo.entity.User;
 
 //rest数据资源
 @RepositoryRestResource(collectionResourceRel = "user", path = "UserJpa")
-public interface UserJpa extends PagingAndSortingRepository<User,Long>{
+public interface UserJpaDao extends PagingAndSortingRepository<User,Long>{
 	List<User> findByLastName(@Param("name")String name);   
 
 }
