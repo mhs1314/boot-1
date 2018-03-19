@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.data.user.dao.UserDao;
+import com.example.demo.data.user.dao.UserJpaDao;
 import com.example.demo.factory.user.service.UserService;
 
 
@@ -16,6 +17,8 @@ public class UserServiceImpl implements UserService{
     
     @Autowired
     private UserDao userMapper;
+    @Autowired
+    private UserJpaDao userjpa;
 
     /**
      * 根据用户名和密码查询用户信息
@@ -24,7 +27,7 @@ public class UserServiceImpl implements UserService{
      */
     @Override
     public  List<Map<String, Object>> queryUserByNamePWD(Map<String, Object> paramMap) {
-      
+    	System.out.println("jpa:"+userjpa.count());
     	return userMapper.queryUserByNamePWD(paramMap);
     }
 

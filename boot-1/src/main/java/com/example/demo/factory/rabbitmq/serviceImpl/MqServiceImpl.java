@@ -1,6 +1,5 @@
 package com.example.demo.factory.rabbitmq.serviceImpl;
 
-import java.util.Date;
 import java.util.Map;
 
 import org.springframework.amqp.core.AmqpTemplate;
