@@ -11,7 +11,12 @@ import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
+/**
+ * url:http://localhost/swagger-ui.html
+ *     http://localhost/doc.html
+ * @author mhs123
+ *
+ */
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
@@ -29,7 +34,7 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("商城API")
-                .contact(new Contact("zhangsan", "http://www.baidu.com", "baidu@163.com"))
+                .contact(new Contact("mhs", "http://www.baidu.com", "baidu@163.com"))
                 .version("1.0")
                 .build();
     }
