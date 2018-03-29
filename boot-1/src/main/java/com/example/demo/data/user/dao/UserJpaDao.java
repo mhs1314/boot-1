@@ -11,6 +11,6 @@ import com.example.demo.entity.User;
 //rest数据资源
 @RepositoryRestResource(collectionResourceRel = "user", path = "UserJpa")
 public interface UserJpaDao extends PagingAndSortingRepository<User,Long>{
-	List<User> findByLastName(@Param("name")String name);   
-
+	List<User> findByname(@Param("username")String username);   
+	User findBynameAndPassword(@Param("username")String username,@Param("password")String password);   
 }

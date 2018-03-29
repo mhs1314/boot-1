@@ -33,7 +33,7 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("商城API")
+                .title("API")
                 .contact(new Contact("mhs", "http://www.baidu.com", "baidu@163.com"))
                 .version("1.0")
                 .build();

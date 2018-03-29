@@ -3,6 +3,10 @@ package com.example.demo.factory.user.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.data.repository.query.Param;
+
+import com.example.demo.entity.User;
+
 public interface UserService {
 
     /**
@@ -14,4 +18,6 @@ public interface UserService {
      * 获取用户的职位权限
      */
     Integer userPermission(Integer id);
+    
+    User findByNameAndPassword(String name,String password); 
 }

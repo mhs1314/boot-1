@@ -1,44 +1,104 @@
 package com.example.demo.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-/**
- * ddl 生成表
- * @author mhs123
- *
- */
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
+
 @Entity
-public class User {
+@Table(name = "user")
+public class User implements java.io.Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long Id;
-	private String firstName;
-	private String lastName;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String email;
+    private Integer sex;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createdate;
+    private String password;
 
-	public void setId(long id) {
-		Id = id;
-	}
+    @ManyToOne
+    @JoinColumn(name = "did")
+    @JsonBackReference
+    private Department department;
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    @ManyToMany(cascade = {}, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "roles_id")})
+    private List<Role> roles;
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public User() {
+    }
 
-	public long getId() {
+    public Long getId() {
+        return id;
+    }
 
-		return Id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
+    }
+
+    public Date getCreatedate() {
+        return createdate;
+    }
+
+    public void setCreatedate(Date createdate) {
+        this.createdate = createdate;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

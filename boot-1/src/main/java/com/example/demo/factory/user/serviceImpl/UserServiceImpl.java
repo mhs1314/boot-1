@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.data.user.dao.UserDao;
 import com.example.demo.data.user.dao.UserJpaDao;
+import com.example.demo.entity.User;
 import com.example.demo.factory.user.service.UserService;
 
 
@@ -40,5 +41,11 @@ public class UserServiceImpl implements UserService{
     public Integer userPermission(Integer id) {
         return userMapper.userPermission(id);
     }
+
+	@Override
+	public User findByNameAndPassword(String name,String password) {
+		// TODO Auto-generated method stub
+		return userjpa.findBynameAndPassword(name,password);
+	}
 
 }
