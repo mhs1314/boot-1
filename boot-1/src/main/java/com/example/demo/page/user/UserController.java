@@ -1,16 +1,11 @@
 package com.example.demo.page.user;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.demo.factory.rabbitmq.service.MqService;
 import com.example.demo.factory.user.service.UserService;
 
 
@@ -32,6 +27,7 @@ public class UserController {
 	@RequestMapping("/list/user")
 	@ResponseBody
 	public Object getlist() {
-		return userService.queryUsers();
+		//返回分页信息
+		return userService.queryUsers().toPageInfo();
 	}
 }

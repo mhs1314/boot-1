@@ -10,6 +10,7 @@ import com.example.demo.data.user.dao.UserDao;
 import com.example.demo.data.user.dao.UserJpaDao;
 import com.example.demo.entity.User;
 import com.example.demo.factory.user.service.UserService;
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 
 
@@ -28,13 +29,14 @@ public class UserServiceImpl implements UserService{
      * @return User
      */
     @Override
-    public  List<Map<String, Object>> queryUsers() {
+    public  Page<Map<String, Object>> queryUsers() {
     	/*  
          * 第一个参数是第几页；第二个参数是每页显示条数。  
          */  
         PageHelper.startPage(1,2); 
         PageHelper.orderBy("id");
-    	return userMapper.queryUsers();
+        Page<Map<String, Object>> page =(Page<Map<String, Object>>) userMapper.queryUsers();
+    	return page;
     }
 
     /**
