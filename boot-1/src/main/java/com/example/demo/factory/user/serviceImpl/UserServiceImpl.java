@@ -10,6 +10,7 @@ import com.example.demo.data.user.dao.UserDao;
 import com.example.demo.data.user.dao.UserJpaDao;
 import com.example.demo.entity.User;
 import com.example.demo.factory.user.service.UserService;
+import com.github.pagehelper.PageHelper;
 
 
 
@@ -22,14 +23,18 @@ public class UserServiceImpl implements UserService{
     private UserJpaDao userjpa;
 
     /**
-     * 根据用户名和密码查询用户信息
+     * 查询用户信息
      * @param username, password
      * @return User
      */
     @Override
-    public  List<Map<String, Object>> queryUserByNamePWD(Map<String, Object> paramMap) {
-    	System.out.println("jpa:"+userjpa.count());
-    	return userMapper.queryUserByNamePWD(paramMap);
+    public  List<Map<String, Object>> queryUsers() {
+    	/*  
+         * 第一个参数是第几页；第二个参数是每页显示条数。  
+         */  
+        PageHelper.startPage(1,2); 
+        PageHelper.orderBy("id");
+    	return userMapper.queryUsers();
     }
 
     /**

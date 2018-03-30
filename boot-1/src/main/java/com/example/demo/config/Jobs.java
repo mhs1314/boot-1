@@ -4,7 +4,11 @@ import java.text.SimpleDateFormat;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-
+/**
+ * 定时任务
+ * @author mhs
+ *
+ */
 @Component
 public class Jobs {
 	public final static long ONE_Minute = 60 * 1000;

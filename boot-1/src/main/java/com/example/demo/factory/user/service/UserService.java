@@ -8,9 +8,9 @@ import com.example.demo.entity.User;
 public interface UserService {
 
     /**
-     * 根据用户名和密码查询用户信息
+     * 查询用户信息
      */
-	 List<Map<String, Object>>  queryUserByNamePWD(Map<String, Object> paramMap);    
+	 List<Map<String, Object>>  queryUsers();    
     
     /**
      * 获取用户的职位权限

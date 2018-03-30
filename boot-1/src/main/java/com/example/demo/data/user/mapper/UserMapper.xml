@@ -4,22 +4,8 @@
 
 	
 	<!-- 根据用户名和密码查询用户信息 -->
-	<select id="queryUserByNamePWD" parameterType="map" resultType="map">
-		SELECT
-			a.*, (
-		SELECT
-			ZW_QX
-		FROM
-			cms_gl_zw
-		WHERE
-			ID = RY_ZWID
-		) "ZW_QX"
-		FROM
-			cms_gl_ry a
-		WHERE
-			RY_XM = #{name}
-		and
-			RY_PWD = #{pass}
+	<select id="queryUsers" resultType="map">
+		SELECT * from user
 	</select>
 	
 	<!-- 根据用户ID查询 用户职位权限 -->

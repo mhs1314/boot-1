@@ -28,12 +28,10 @@ public class UserController {
 		return "index";
 	}
 
-	@RequestMapping("/login/{name}/{pass}")
+
+	@RequestMapping("/list/user")
 	@ResponseBody
-	public Object Login(@PathVariable("name") String name,@PathVariable("pass") String pass) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("name", name);
-		map.put("pass", pass);
-		return userService.queryUserByNamePWD(map);
+	public Object getlist() {
+		return userService.queryUsers();
 	}
 }
