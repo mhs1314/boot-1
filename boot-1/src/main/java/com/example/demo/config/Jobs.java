@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+
+import us.codecraft.webmagic.Spider;
 /**
  * 定时任务
  * @author mhs
@@ -16,7 +18,14 @@ public class Jobs {
 	// fixedDelay是当任务执行完毕后1分钟在执行
 	@Scheduled(fixedDelay = ONE_Minute)
 	public void fixedDelayJob() {
-		System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date()) + " >>fixedDelay执行....");
+		long startTime, endTime;
+		System.out.println("【爬虫开始】请耐心等待一大波数据到你碗里来...");
+		startTime = System.currentTimeMillis();
+		// 从用户博客首页开始抓，开启5个线程，启动爬虫
+		Spider.create(new CsdnBlogPageProcessor()).addUrl("http://blog.csdn.net/zhouseawater" ).thread(5).run();
+		endTime = System.currentTimeMillis();
+		System.out.println("【爬虫结束】共抓取篇文章，耗时约" + ((endTime - startTime) / 1000) + "秒，已保存到数据库，请查收！");
+
 	}
 
 	// fixedRate就是每多次分钟一次,不论你业务执行花费了多少时间

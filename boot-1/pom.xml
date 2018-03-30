@@ -146,7 +146,17 @@
 			<artifactId>activiti-spring-boot-starter-basic</artifactId>
 			<version>6.0.0</version>
 		</dependency>
-
+		<!--webmagic 爬虫 -->
+		<dependency>
+			<groupId>us.codecraft</groupId>
+			<artifactId>webmagic-core</artifactId>
+			<version>0.7.2</version>
+		</dependency>
+		<dependency>
+			<groupId>us.codecraft</groupId>
+			<artifactId>webmagic-extension</artifactId>
+			<version>0.7.2</version>
+		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
