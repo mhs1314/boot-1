@@ -19,8 +19,6 @@ import com.example.demo.factory.user.service.UserService;
 public class UserController {
 	@Autowired
 	private UserService userService;
-	@Autowired
-	private MqService mqService;
 
 	@RequestMapping("/index")
 	public String index(Model model) {

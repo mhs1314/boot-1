@@ -3,8 +3,6 @@ package com.example.demo.factory.user.service;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.data.repository.query.Param;
-
 import com.example.demo.entity.User;
 
 public interface UserService {
