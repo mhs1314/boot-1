@@ -21,7 +21,7 @@ import us.codecraft.webmagic.processor.PageProcessor;
 public class CsdnBlogPageProcessor implements PageProcessor {
 	@Autowired
 	protected CsdnBlogJpaDao csdnBlogJpaDao;
-	private static String username = "zhouseawater";// 设置csdn用户名
+	private static String username = "qq598535550";// 设置csdn用户名
 	private static int size = 0;// 共抓取到的文章数量
 
 	// 抓取网站的相关配置，包括：编码、抓取间隔、重试次数等
@@ -36,7 +36,7 @@ public class CsdnBlogPageProcessor implements PageProcessor {
 	// process是定制爬虫逻辑的核心接口，在这里编写抽取逻辑
 	public void process(Page page) {
 		// 列表页
-		if (!page.getUrl().regex("http://blog\\.csdn\\.net/zhouseawater\\d+").match()) {
+		if (!page.getUrl().regex("http://blog\\.csdn\\.net/" + username + "/article/details/\\d+").match()) {
 			// 添加所有文章页
 			page.addTargetRequests(page.getHtml().xpath("//div[@id='article_list']").links()// 限定文章列表获取区域
 					.regex("/" + username + "/article/details/\\d+")
@@ -100,12 +100,12 @@ public class CsdnBlogPageProcessor implements PageProcessor {
 	}
 
 	public static void main(String[] args) {
-		/*long startTime, endTime;
+		long startTime, endTime;
 		System.out.println("【爬虫开始】请耐心等待一大波数据到你碗里来...");
 		startTime = System.currentTimeMillis();
 		// 从用户博客首页开始抓，开启5个线程，启动爬虫
 		Spider.create(new CsdnBlogPageProcessor()).addUrl("http://blog.csdn.net/" + username).thread(5).run();
 		endTime = System.currentTimeMillis();
 		System.out.println("【爬虫结束】共抓取" + size + "篇文章，耗时约" + ((endTime - startTime) / 1000) + "秒，已保存到数据库，请查收！");
-*/	}
+	}
 }
